@@ -4,9 +4,10 @@
 // color
 @color-main:  #792362;
 @color-white: #ffffff;
-@color-gray:  #eceff1;
 @color-dark:  #36474f;
 @color-black: #253238;
+@color-gray-back:  #eceff1;
+@color-gray-front: #445a64;
 @color-deep-green: #223606;
 
 // media
@@ -19,6 +20,14 @@
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0,.26);
 }
 
+.button-transition {
+  transition: background-color 0.4s ease;
+
+  &:hover {
+    transition: background-color 0.05s ease;
+  }
+}
+
 // ============================================================//
 
 @footer-background-color: @color-black;
@@ -29,60 +38,150 @@ body {
 
 header {
   background-color: @color-main;
+  color: @color-white;
+  font-size: 22px;
+
+  h1 {
+    font-weight: 500;
+  }
+}
+
+#head {
+  @height: 58px;
+  display: flex;
+  height: @height;
+  line-height: @height;
+
+  img {
+    height: 36px;
+    margin: 6px 6px 8px 16px;
+  }
+
+  nav {
+    @media @mobile  { display: none; }
+    @media @tablet  { display: flex; }
+    @media @desktop { display: flex; }
+  }
+
+  a {
+    display: block;
+    color: @color-white;
+    padding: 0 2rem;
+    .button-transition();
+
+    &:first-child {
+      margin-left: 1rem;
+    }
+
+    &:hover {
+      background-color: lighten(@color-main, 8%);
+    }
+  }
 }
 
 @hero-height: 480px;
 #hero {
+  @padding: 50px;
   background: url("../images/kyoto-paper.png") bottom center no-repeat;
   background-color: #d9e0bf;
   background-size: 100% auto;
   width: 100%;
-  @media @mobile  { height: @hero-height * .5; }
-  @media @tablet  { height: @hero-height * .75; }
+  @media @mobile  { height: @hero-height * .75; }
+  @media @tablet  { height: @hero-height * .85; }
   @media @desktop { height: @hero-height; }
-  padding: 50px;
+
+  @media @mobile  { padding: @padding @padding * .5; }
+  @media @tablet  { padding: @padding @padding; }
+  @media @desktop { padding: @padding @padding; }
 
   h2 {
-    @height: 254px;
     background: url("../images/ng-kyoto-hero-logo.png") top center no-repeat;
-    background-size: 220px 234px;
-    width: 500px;
-    height: @height;
     margin: auto;
-    padding: @height 0 0 0;
     text-align: center;
-    font-size: 1.25rem;
     font-weight: normal;
     color: @color-deep-green;
+
+    @media @mobile  { font-size: 1.1rem; }
+    @media @tablet  { font-size: 1.25rem; }
+    @media @desktop { font-size: 1.25rem; }
+
+    @width:  500px;
+    @media @mobile  { width: none; }
+    @media @tablet  { width: none; }
+    @media @desktop { width: @width; }
+
+    @height: 254px;
+    @media @mobile  { height: @height * .5;  }
+    @media @tablet  { height: @height * .75; }
+    @media @desktop { height: @height; }
+
+    @media @mobile  { padding: @height * .5  0 0 0; }
+    @media @tablet  { padding: @height * .75 0 0 0; }
+    @media @desktop { padding: @height       0 0 0; }
+
+    @logo-w: 220px;
+    @logo-h: 234px;
+    @media @mobile  { background-size: @logo-w * .5  @logo-h * .5 ; }
+    @media @tablet  { background-size: @logo-w * .75 @logo-h * .75; }
+    @media @desktop { background-size: @logo-w       @logo-h; }
+
   }
 
   .apply {
     display: block;
     background-color: @color-main;
     color: @color-white;
-    width: 430px;
     height: 3.5rem;
     margin: 86px auto 0;
     text-align: center;
     font-size: 1.3rem;
     padding: 0.8rem;
     border-radius: 4px;
+
+    @media @mobile  { font-size: 1.1rem; }
+    @media @tablet  { font-size: 1.3rem; }
+    @media @desktop { font-size: 1.3rem; }
+
+    @width:  430px;
+    @media @mobile  { width: none; }
+    @media @tablet  { width: @width; }
+    @media @desktop { width: @width; }
+
     .button-box-shadow();
+    .button-transition();
+
+    &:hover {
+      background-color: lighten(@color-main, 8%);
+    }
   }
 }
 
 section {
   background-color: @color-white;
   text-align: center;
+  padding: 4rem 0;
+
+  p {
+    padding: 4rem 1rem;
+    @media @mobile {
+      padding: 4rem 0;
+      width: 90%;
+      margin: auto;
+      text-align: left;
+    }
+  }
 
   h1 {
     font-weight: lighter;
     font-size: 4rem;
+    line-height: .8em;
+    margin-bottom: .8rem;
   }
 }
 
 #about {
-  background-color: @color-gray;
+  background-color: @color-gray-back;
+  color: @color-gray-front;
 }
 
 footer {

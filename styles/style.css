@@ -20,28 +20,77 @@
 .button-box-shadow {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
+.button-transition {
+  transition: background-color 0.4s ease;
+}
+.button-transition:hover {
+  transition: background-color 0.05s ease;
+}
 body {
   background-color: #253238;
   font-family: "Roboto", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 header {
   background-color: #792362;
+  color: #ffffff;
+  font-size: 22px;
+}
+header h1 {
+  font-weight: 500;
+}
+#head {
+  display: flex;
+  height: 58px;
+  line-height: 58px;
+}
+#head img {
+  height: 36px;
+  margin: 6px 6px 8px 16px;
+}
+@media only screen and (max-width: 767px) {
+  #head nav {
+    display: none;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  #head nav {
+    display: flex;
+  }
+}
+@media only screen and (min-width: 1129px) {
+  #head nav {
+    display: flex;
+  }
+}
+#head a {
+  display: block;
+  color: #ffffff;
+  padding: 0 2rem;
+  transition: background-color 0.4s ease;
+}
+#head a:hover {
+  transition: background-color 0.05s ease;
+}
+#head a:first-child {
+  margin-left: 1rem;
+}
+#head a:hover {
+  background-color: #992c7c;
 }
 #hero {
   background: url("../images/kyoto-paper.png") bottom center no-repeat;
   background-color: #d9e0bf;
   background-size: 100% auto;
   width: 100%;
-  padding: 50px;
 }
 @media only screen and (max-width: 767px) {
   #hero {
-    height: 240px;
+    height: 360px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1199px) {
   #hero {
-    height: 360px;
+    height: 408px;
   }
 }
 @media only screen and (min-width: 1129px) {
@@ -49,23 +98,107 @@ header {
     height: 480px;
   }
 }
+@media only screen and (max-width: 767px) {
+  #hero {
+    padding: 50px 25px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  #hero {
+    padding: 50px 50px;
+  }
+}
+@media only screen and (min-width: 1129px) {
+  #hero {
+    padding: 50px 50px;
+  }
+}
 #hero h2 {
   background: url("../images/ng-kyoto-hero-logo.png") top center no-repeat;
-  background-size: 220px 234px;
-  width: 500px;
-  height: 254px;
   margin: auto;
-  padding: 254px 0 0 0;
   text-align: center;
-  font-size: 1.25rem;
   font-weight: normal;
   color: #223606;
+}
+@media only screen and (max-width: 767px) {
+  #hero h2 {
+    font-size: 1.1rem;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  #hero h2 {
+    font-size: 1.25rem;
+  }
+}
+@media only screen and (min-width: 1129px) {
+  #hero h2 {
+    font-size: 1.25rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #hero h2 {
+    width: none;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  #hero h2 {
+    width: none;
+  }
+}
+@media only screen and (min-width: 1129px) {
+  #hero h2 {
+    width: 500px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #hero h2 {
+    height: 127px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  #hero h2 {
+    height: 190.5px;
+  }
+}
+@media only screen and (min-width: 1129px) {
+  #hero h2 {
+    height: 254px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #hero h2 {
+    padding: 127px 0 0 0;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  #hero h2 {
+    padding: 190.5px 0 0 0;
+  }
+}
+@media only screen and (min-width: 1129px) {
+  #hero h2 {
+    padding: 254px 0 0 0;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #hero h2 {
+    background-size: 110px 117px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  #hero h2 {
+    background-size: 165px 175.5px;
+  }
+}
+@media only screen and (min-width: 1129px) {
+  #hero h2 {
+    background-size: 220px 234px;
+  }
 }
 #hero .apply {
   display: block;
   background-color: #792362;
   color: #ffffff;
-  width: 430px;
   height: 3.5rem;
   margin: 86px auto 0;
   text-align: center;
@@ -73,17 +206,69 @@ header {
   padding: 0.8rem;
   border-radius: 4px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: background-color 0.4s ease;
+}
+@media only screen and (max-width: 767px) {
+  #hero .apply {
+    font-size: 1.1rem;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  #hero .apply {
+    font-size: 1.3rem;
+  }
+}
+@media only screen and (min-width: 1129px) {
+  #hero .apply {
+    font-size: 1.3rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #hero .apply {
+    width: none;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  #hero .apply {
+    width: 430px;
+  }
+}
+@media only screen and (min-width: 1129px) {
+  #hero .apply {
+    width: 430px;
+  }
+}
+#hero .apply:hover {
+  transition: background-color 0.05s ease;
+}
+#hero .apply:hover {
+  background-color: #992c7c;
 }
 section {
   background-color: #ffffff;
   text-align: center;
+  padding: 4rem 0;
+}
+section p {
+  padding: 4rem 1rem;
+}
+@media only screen and (max-width: 767px) {
+  section p {
+    padding: 4rem 0;
+    width: 90%;
+    margin: auto;
+    text-align: left;
+  }
 }
 section h1 {
   font-weight: lighter;
   font-size: 4rem;
+  line-height: .8em;
+  margin-bottom: .8rem;
 }
 #about {
   background-color: #eceff1;
+  color: #445a64;
 }
 footer {
   background-color: #36474f;
