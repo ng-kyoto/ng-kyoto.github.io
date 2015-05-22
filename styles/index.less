@@ -1,0 +1,98 @@
+@import (css) "sanitize.css";
+@import "fonts.less";
+
+// color
+@color-main:  #792362;
+@color-white: #ffffff;
+@color-gray:  #eceff1;
+@color-dark:  #36474f;
+@color-black: #253238;
+@color-deep-green: #223606;
+
+// media
+@mobile:  ~"only screen and (max-width: 767px)";
+@tablet:  ~"only screen and (min-width: 768px) and (max-width: 1199px)";
+@desktop: ~"only screen and (min-width: 1129px)";
+
+// for mixin
+.button-box-shadow {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0,.26);
+}
+
+// ============================================================//
+
+@footer-background-color: @color-black;
+body {
+  background-color: @footer-background-color;
+  font-family: "Roboto", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+header {
+  background-color: @color-main;
+}
+
+@hero-height: 480px;
+#hero {
+  background: url("../images/kyoto-paper.png") bottom center no-repeat;
+  background-color: #d9e0bf;
+  background-size: 100% auto;
+  width: 100%;
+  @media @mobile  { height: @hero-height * .5; }
+  @media @tablet  { height: @hero-height * .75; }
+  @media @desktop { height: @hero-height; }
+  padding: 50px;
+
+  h2 {
+    @height: 254px;
+    background: url("../images/ng-kyoto-hero-logo.png") top center no-repeat;
+    background-size: 220px 234px;
+    width: 500px;
+    height: @height;
+    margin: auto;
+    padding: @height 0 0 0;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: normal;
+    color: @color-deep-green;
+  }
+
+  .apply {
+    display: block;
+    background-color: @color-main;
+    color: @color-white;
+    width: 430px;
+    height: 3.5rem;
+    margin: 86px auto 0;
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 0.8rem;
+    border-radius: 4px;
+    .button-box-shadow();
+  }
+}
+
+section {
+  background-color: @color-white;
+  text-align: center;
+
+  h1 {
+    font-weight: lighter;
+    font-size: 4rem;
+  }
+}
+
+#about {
+  background-color: @color-gray;
+}
+
+footer {
+  background-color: @color-dark;
+  color: @color-white;
+  font-weight: 300;
+  text-align: center;
+}
+
+#copyright {
+  background-color: @footer-background-color;
+  color: @color-white;
+}

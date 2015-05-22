@@ -1,0 +1,29 @@
+{
+  "name": "ng-kyoto.github.io",
+  "version": "1.0.0",
+  "description": "http://ng-kyoto.github.io/",
+  "main": "index.js",
+  "scripts": {
+    "test": "#",
+    "build": "lessc ./styles/index.less > ./styles/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://armorik83@github.com/ng-kyoto/ng-kyoto.github.io.git"
+  },
+  "keywords": [
+    "AngularJS",
+    "Angular",
+    "Japan",
+    "Kyoto"
+  ],
+  "author": "ng-kyoto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ng-kyoto/ng-kyoto.github.io/issues"
+  },
+  "homepage": "https://github.com/ng-kyoto/ng-kyoto.github.io#readme",
+  "dependencies": {
+    "less": "^2.5.1"
+  }
+}

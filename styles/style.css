@@ -1,0 +1,97 @@
+@import "sanitize.css";
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Thin'), local('Roboto-Thin'), url(http://themes.googleusercontent.com/static/fonts/roboto/v10/vzIUHo9z-oJ4WgkpPOtg1_esZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'), url(http://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'), url(http://themes.googleusercontent.com/static/fonts/roboto/v10/RxZJdnzeo3R5zSexge8UUT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+.button-box-shadow {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+body {
+  background-color: #253238;
+  font-family: "Roboto", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+header {
+  background-color: #792362;
+}
+#hero {
+  background: url("../images/kyoto-paper.png") bottom center no-repeat;
+  background-color: #d9e0bf;
+  background-size: 100% auto;
+  width: 100%;
+  padding: 50px;
+}
+@media only screen and (max-width: 767px) {
+  #hero {
+    height: 240px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  #hero {
+    height: 360px;
+  }
+}
+@media only screen and (min-width: 1129px) {
+  #hero {
+    height: 480px;
+  }
+}
+#hero h2 {
+  background: url("../images/ng-kyoto-hero-logo.png") top center no-repeat;
+  background-size: 220px 234px;
+  width: 500px;
+  height: 254px;
+  margin: auto;
+  padding: 254px 0 0 0;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: normal;
+  color: #223606;
+}
+#hero .apply {
+  display: block;
+  background-color: #792362;
+  color: #ffffff;
+  width: 430px;
+  height: 3.5rem;
+  margin: 86px auto 0;
+  text-align: center;
+  font-size: 1.3rem;
+  padding: 0.8rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+section {
+  background-color: #ffffff;
+  text-align: center;
+}
+section h1 {
+  font-weight: lighter;
+  font-size: 4rem;
+}
+#about {
+  background-color: #eceff1;
+}
+footer {
+  background-color: #36474f;
+  color: #ffffff;
+  font-weight: 300;
+  text-align: center;
+}
+#copyright {
+  background-color: #253238;
+  color: #ffffff;
+}
