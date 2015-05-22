@@ -122,7 +122,7 @@ header h1 {
 }
 @media only screen and (max-width: 767px) {
   #hero h2 {
-    font-size: 1   rem;
+    font-size: 1.00rem;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1199px) {
