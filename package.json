@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "#",
-    "build": "lessc ./styles/index.less > ./styles/style.css"
+    "build": "lessc ./styles/index.less > ./styles/style.css",
+    "start": "gulp"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,9 @@
     "url": "https://github.com/ng-kyoto/ng-kyoto.github.io/issues"
   },
   "homepage": "https://github.com/ng-kyoto/ng-kyoto.github.io#readme",
-  "dependencies": {
-    "less": "^2.5.1"
+  "devDependencies": {
+    "less": "^2.5.1",
+    "gulp": "^3.8.11",
+    "gulp-shell": "^0.4.1"
   }
 }
