@@ -1,0 +1,82 @@
+@import (css) "./app/common-styles/bootstrap.min.css";
+@import "fonts.less";
+
+// color
+@color-main:  #792362;
+@color-white: #ffffff;
+@color-dark:  #36474f;
+@color-black: #253238;
+@color-gray-back:  #eceff1;
+@color-gray-front: #445a64;
+@color-deep-green: #223606;
+
+// media from Bootstrap 3
+@xs:  ~"only screen and (max-width: 767px)";
+@sm:  ~"only screen and (min-width: 768px) and (max-width: 991px)";
+@md:  ~"only screen and (min-width: 992px) and (max-width: 1199px)";
+@lg:  ~"only screen and (min-width: 1129px)";
+@sm_: ~"only screen and (min-width: 768px)";
+@md_: ~"only screen and (min-width: 992px)";
+
+// for mixin
+.button-box-shadow {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0,.26);
+}
+
+.button-transition {
+  transition: background-color 0.4s ease;
+
+  &:hover {
+    transition: background-color 0.05s ease;
+  }
+}
+
+// ============================================================
+
+html {
+  font-size: 100%;
+}
+
+@footer-background-color: @color-black;
+body {
+  font-size: 16px;
+  background-color: @footer-background-color;
+  font-family: "Roboto", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+a {
+  &, &:hover, &:focus {
+    text-decoration: none;
+  }
+}
+
+.section {
+  background-color: @color-white;
+  text-align: center;
+  padding: 4rem 0;
+
+  p {
+    padding: 2rem 1rem;
+    @media @xs {
+      padding: 2rem 0;
+      width: 90%;
+      margin: auto;
+      text-align: left;
+    }
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: lighter;
+    line-height: .8em;
+    margin: 0 0 .8rem;
+  }
+}
+
+@import "../components/header.less";
+@import "../components/about.less";
+@import "../components/footer.less";
+
+.under-construction {
+  display: none !important;
+}

@@ -1,0 +1,97 @@
+@header-height: 58px;
+ng-kyoto-header {
+  display: block;
+  background-color: @color-main;
+  color: @color-white;
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    line-height: @header-height;
+    font-weight: 500;
+    font-size: 1.5rem
+  }
+}
+
+#head {
+  display: flex;
+  height: @header-height;
+  line-height: @header-height;
+
+  img {
+    height: @header-height * .62;
+    margin: @header-height * .1 @header-height * .1 @header-height * .14 @header-height * .26;
+  }
+
+  nav {
+    @media @xs  { display: none; }
+    @media @sm_ { display: flex; }
+  }
+
+  a {
+    display: block;
+    color: @color-white;
+    padding: 0 2rem;
+    .button-transition();
+
+    &:first-child {
+      margin-left: 1rem;
+    }
+
+    &:hover {
+      background-color: lighten(@color-main, 8%);
+    }
+  }
+}
+
+@hero-height: 480px;
+#hero {
+  background: url("./app/images/kyoto-paper.png") bottom center no-repeat;
+  background-color: #d9e0bf;
+  background-size: 100% auto;
+  height: @hero-height;
+
+  h2 {
+    background: url("./app/images/ng-kyoto-hero-logo.png") top center no-repeat;
+    text-align: center;
+    font-weight: normal;
+
+    @media @xs  { font-size: 1.1rem; }
+    @media @sm_ { font-size: 1.4rem; }
+    line-height: 2rem;
+    color: @color-deep-green;
+
+    @logo-w: 220px;
+    @logo-h: 234px;
+    background-size: @logo-w @logo-h;
+    height: @logo-h;
+    margin-top: 50px;
+    padding-top: ~"calc(@{logo-h} + 1.5rem)";
+  }
+
+  .apply {
+    display: block;
+    background-color: @color-main;
+    color: @color-white;
+    text-align: center;
+    border-radius: 4px;
+    margin-top: 5rem;
+    font-size: 1.2rem;
+
+    @height: 3rem;
+    height: @height;
+    line-height: @height;
+
+    .button-box-shadow();
+    .button-transition();
+
+    @media @xs {
+      margin-left:  1em;
+      margin-right: 1em;
+    }
+
+    &:hover {
+      background-color: lighten(@color-main, 8%);
+    }
+  }
+}

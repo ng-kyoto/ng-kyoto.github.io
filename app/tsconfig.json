@@ -1,0 +1,27 @@
+{
+    "version": "1.5.0-beta",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "emitDecoratorMetadata": true
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./components/about.ts",
+        "./components/app.ts",
+        "./components/footer.ts",
+        "./components/header.ts",
+        "./index.ts",
+        "./utils/directives/bootstrap-grid.ts",
+        "./utils/pipes/pipes.ts"
+    ]
+}

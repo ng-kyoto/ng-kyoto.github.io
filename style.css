@@ -1,0 +1,189 @@
+@import "app/common-styles/bootstrap.min.css";
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Thin'), local('Roboto-Thin'), url(http://themes.googleusercontent.com/static/fonts/roboto/v10/vzIUHo9z-oJ4WgkpPOtg1_esZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'), url(http://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'), url(http://themes.googleusercontent.com/static/fonts/roboto/v10/RxZJdnzeo3R5zSexge8UUT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+.button-box-shadow {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.button-transition {
+  transition: background-color 0.4s ease;
+}
+.button-transition:hover {
+  transition: background-color 0.05s ease;
+}
+html {
+  font-size: 100%;
+}
+body {
+  font-size: 16px;
+  background-color: #253238;
+  font-family: "Roboto", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+.section {
+  background-color: #ffffff;
+  text-align: center;
+  padding: 4rem 0;
+}
+.section p {
+  padding: 2rem 1rem;
+}
+@media only screen and (max-width: 767px) {
+  .section p {
+    padding: 2rem 0;
+    width: 90%;
+    margin: auto;
+    text-align: left;
+  }
+}
+.section h1 {
+  font-size: 4rem;
+  font-weight: lighter;
+  line-height: .8em;
+  margin: 0 0 .8rem;
+}
+ng-kyoto-header {
+  display: block;
+  background-color: #792362;
+  color: #ffffff;
+}
+ng-kyoto-header h1 {
+  margin: 0;
+  padding: 0;
+  line-height: 58px;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+#head {
+  display: flex;
+  height: 58px;
+  line-height: 58px;
+}
+#head img {
+  height: 35.96px;
+  margin: 5.8px 5.8px 8.12px 15.08px;
+}
+@media only screen and (max-width: 767px) {
+  #head nav {
+    display: none;
+  }
+}
+@media only screen and (min-width: 768px) {
+  #head nav {
+    display: flex;
+  }
+}
+#head a {
+  display: block;
+  color: #ffffff;
+  padding: 0 2rem;
+  transition: background-color 0.4s ease;
+}
+#head a:hover {
+  transition: background-color 0.05s ease;
+}
+#head a:first-child {
+  margin-left: 1rem;
+}
+#head a:hover {
+  background-color: #992c7c;
+}
+#hero {
+  background: url("app/images/kyoto-paper.png") bottom center no-repeat;
+  background-color: #d9e0bf;
+  background-size: 100% auto;
+  height: 480px;
+}
+#hero h2 {
+  background: url("app/images/ng-kyoto-hero-logo.png") top center no-repeat;
+  text-align: center;
+  font-weight: normal;
+  line-height: 2rem;
+  color: #223606;
+  background-size: 220px 234px;
+  height: 234px;
+  margin-top: 50px;
+  padding-top: calc(234px + 1.5rem);
+}
+@media only screen and (max-width: 767px) {
+  #hero h2 {
+    font-size: 1.1rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  #hero h2 {
+    font-size: 1.4rem;
+  }
+}
+#hero .apply {
+  display: block;
+  background-color: #792362;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 4px;
+  margin-top: 5rem;
+  font-size: 1.2rem;
+  height: 3rem;
+  line-height: 3rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: background-color 0.4s ease;
+}
+#hero .apply:hover {
+  transition: background-color 0.05s ease;
+}
+@media only screen and (max-width: 767px) {
+  #hero .apply {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+#hero .apply:hover {
+  background-color: #992c7c;
+}
+about {
+  display: block;
+}
+about.section {
+  background-color: #eceff1;
+  color: #445a64;
+}
+about p {
+  line-height: 1.8em;
+}
+@media only screen and (min-width: 768px) {
+  about .short {
+    letter-spacing: .15em;
+  }
+}
+footer {
+  background-color: #36474f;
+  color: #ffffff;
+  font-weight: 300;
+  text-align: center;
+}
+#copyright {
+  background-color: #253238;
+  color: #ffffff;
+}
+.under-construction {
+  display: none !important;
+}

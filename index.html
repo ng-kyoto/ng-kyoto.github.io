@@ -3,51 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1">
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./style.css">
   <title>ng-kyoto</title>
 </head>
 <body>
-  <header>
-    <div id="head">
-      <h1><img src="./images/ng-kyoto-header-logo.png" alt="ng-kyoto logo">ng-kyoto</h1>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#events" class="under-construction">Events</a>
-        <a href="#organizers">Organizers</a>
-      </nav>
-    </div>
-
-    <div id="hero">
-      <h2>古都の空気に触れながら、<br>Angularの未来を一緒に学ばはりませんか</h2>
-      <a class="apply" href="http://ng-kyoto.connpass.com/event/15595/">Angular Meetup Kyoto #1に参加する</a>
-    </div>
-  </header>
-
-  <section id="about">
-    <h1>About</h1>
-    <p>
-      ng-kyotoはAngularをテーマに京都で活動を行っているユーザーコミュニティです。<br>
-      日本の古都、京都から最先端のWeb技術を学び、発信していきます。<br>
-      古都の空気に触れながら、Angularの未来を一緒に学びませんか？<br>
-      Angularって聞くと「なんぎやな、ややこしな」と思わはるかもしれませんけど、<br>
-      周りと一緒に勉強したら意外ととっつきやすいんですよ。
-    </p>
-  </section>
-  <section id="events" class="under-construction">
-    <h1>Events</h1>
-    <p>
-      工事中
-    </p>
-  </section>
-  <section id="organizers">
-    <h1>Organizers</h1>
-    <p>
-      armorik83, _likr, shinsukeimai
-    </p>
-  </section>
-  <footer>
-    <p>ng-kyoto</p>
-    <p id="copyright">&copy;ng-kyoto</p>
-  </footer>
+  <ng-kyoto-app>Loading...</ng-kyoto-app>
+  <script src="./browser-polyfill.min.js" charset="utf-8"></script>
+  <script src="./bundle.js" charset="utf-8"></script>
 </body>
 </html>
