@@ -6,7 +6,8 @@
   "scripts": {
     "test": "#",
     "build": "gulp build",
-    "start": "gulp"
+    "start": "gulp",
+    "dtsm": "dtsm install"
   },
   "repository": {
     "type": "git",
