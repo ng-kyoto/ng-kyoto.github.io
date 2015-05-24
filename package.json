@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "#",
-    "build": "lessc ./styles/index.less > ./styles/style.css",
+    "build": "gulp build",
     "start": "gulp"
   },
   "repository": {
