@@ -1,12 +1,21 @@
-'use strict';
-import {Directive, ViewContainerRef} from 'angular2/angular2';
+interface ViewContainerRef {}
+
+import {angular} from '../../angular2';
+const {Directive, ViewContainerRef} = angular;
 
 const rowTag = 'row';
 const colTag = 'bcol'; // <col> overlap with the existing elements
 
 document.addEventListener('DOMContentLoaded', (event) => {
   const style = document.createElement('style');
-  style.innerText = `${rowTag}, ${colTag} { display: block; }`;
+  const text = `${rowTag}, ${colTag} { display: block; }`;
+
+  if (style.innerText === void 0) {
+    style.textContent = text;
+  } else {
+    style.innerText = text;
+  }
+
   document.head.appendChild(style);
 });
 
@@ -15,7 +24,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 })
 export class Row {
   constructor(viewContainer: ViewContainerRef) {
-    const elm = viewContainer.element.domElement;
+    const elm = (<any>viewContainer).element.domElement;
     elm.classList.add('row');
   }
 }
@@ -51,7 +60,7 @@ export class Col {
   }
 
   addClass(cls: string) {
-    this.viewContainer.element.domElement.classList.add(cls);
+    (<any>this.viewContainer).element.domElement.classList.add(cls);
   }
 
   set xs(n) { if (+n === 0) { return; } this.addClass(`col-xs-${n}`); }

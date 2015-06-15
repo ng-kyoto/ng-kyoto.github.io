@@ -1,0 +1,32 @@
+{
+    "version": "1.5.0-alpha",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./app/components/about.ts",
+        "./app/components/app.ts",
+        "./app/components/footer.ts",
+        "./app/components/header.ts",
+        "./app/components/organizers.ts",
+        "./app/index.ts",
+        "./app/utils/directives/bootstrap-grid.ts",
+        "./app/utils/innertext-polyfill.ts",
+        "./app/utils/pipes/pipes.ts",
+        "./typings/angular2/angular2.d.ts",
+        "./typings/bundle.d.ts",
+        "./typings/es6-promise/es6-promise.d.ts",
+        "./typings/node/node.d.ts"
+    ]
+}

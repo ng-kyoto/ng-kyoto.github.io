@@ -39,6 +39,7 @@
   "dependencies": {
     "angular2": "^2.0.0-alpha.25",
     "babel-core": "^5.4.7",
-    "reflect-metadata": "^0.1.0"
+    "reflect-metadata": "^0.1.0",
+    "whatwg-fetch": "^0.8.2"
   }
 }

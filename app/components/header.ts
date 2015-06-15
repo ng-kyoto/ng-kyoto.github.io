@@ -1,5 +1,7 @@
-'use strict';
-import {Component, View, ViewContainerRef} from 'angular2/angular2';
+interface ViewContainerRef {};
+
+import {angular} from '../angular2';
+const {Component, View, ViewContainerRef} = angular;
 import {Row, Col} from '../utils/directives/bootstrap-grid';
 
 @Component({
@@ -21,7 +23,7 @@ class ApplyButton {
   label: string;
 
   constructor(viewContainer: ViewContainerRef) {
-    this.label = viewContainer.element.domElement.innerText;
+    this.label = (<any>viewContainer).element.domElement.innerText;
   }
 }
 

@@ -1,7 +1,9 @@
 'use strict';
-import {Component, View} from 'angular2/angular2';
+import {angular} from '../angular2';
+const {Component, View} = angular;
 import {HeaderComponent} from './header';
 import {AboutComponent} from './about';
+import {OrganizersComponent} from './organizers';
 import {FooterComponent} from './footer';
 
 @Component({
@@ -12,6 +14,7 @@ import {FooterComponent} from './footer';
   directives: [
     HeaderComponent,
     AboutComponent,
+    OrganizersComponent,
     FooterComponent
   ]
 })

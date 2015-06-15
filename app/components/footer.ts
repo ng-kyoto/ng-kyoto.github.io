@@ -1,5 +1,6 @@
 'use strict';
-import {Component, View} from 'angular2/angular2';
+import {angular} from '../angular2';
+const {Component, View} = angular;
 import {Row, Col} from '../utils/directives/bootstrap-grid';
 
 @Component({
