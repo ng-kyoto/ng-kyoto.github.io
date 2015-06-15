@@ -31,7 +31,7 @@ export class OrganizersComponent {
   fetchUser(userId: string): Promise<any> {
     return new Promise((resolve, reject) => {
       fetch(`http://qiita.com/api/v2/users/${userId}/items?per_page=20`, {
-        method: 'get' //
+        method: 'get'
       })
       .then (res  => res.json())
       .then (json => resolve(this.filterPost(json)))
