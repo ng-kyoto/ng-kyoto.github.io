@@ -1,5 +1,5 @@
 {
-    "version": "1.5.0-beta",
+    "version": "1.5.3",
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
@@ -21,6 +21,7 @@
         "./components/app.ts",
         "./components/footer.ts",
         "./components/header.ts",
+        "./components/organizer.ts",
         "./components/organizers.ts",
         "./index.ts",
         "./utils/directives/bootstrap-grid.ts",
