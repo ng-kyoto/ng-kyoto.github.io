@@ -34,7 +34,7 @@ export class OrganizersComponent {
   }
 
   /**
-   * return exp.
+   * returns exp.
    * [[imai, imai, imai], [armorik83, armorik83, armorik83], [_likr]]
    *
    * @param {Array<*>} posts
@@ -57,6 +57,7 @@ export class OrganizersComponent {
     const result = [];
     Object.keys(organizersPosts).forEach(organizer => result.push(organizersPosts[organizer]));
 
+    // The return type must be an Array<Array<QiitaPost>>
     return result;
   }
 }
