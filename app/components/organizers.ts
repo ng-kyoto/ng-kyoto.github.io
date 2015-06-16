@@ -13,24 +13,18 @@ import {Row, Col} from '../utils/directives/bootstrap-grid';
 })
 export class OrganizersComponent {
   angularPosts: any;
-  organizers = ['armorik83', '_likr', 'shinsukeimai'];
 
   constructor() {
-    const promises = this.organizers.map(user => this.fetchUser(user));
-
-    this.angularPosts = new Promise(resolve => Promise.all(promises).then(res => {
-      console.log(res);
-      resolve(res);
-    }));
+    this.angularPosts = this.fetchUser();
+    this.angularPosts.then(res => console.log(res));
   }
 
   /**
-   * @param {string} userId
    * @returns {Promise}
    */
-  fetchUser(userId: string): Promise<any> {
+  fetchUser(): Promise<any> {
     return new Promise((resolve, reject) => {
-      fetch(`http://qiita.com/api/v2/users/${userId}/items?per_page=20`, {
+      fetch(`http://qiita.com/api/v2/items?per_page=20&query=user:_likr%20or%20user:armorik83%20or%20user:shinsukeimai`, {
         method: 'get'
       })
       .then (res  => res.json())
@@ -40,17 +34,28 @@ export class OrganizersComponent {
   }
 
   /**
+   * return exp.
+   * [[imai, imai, imai], [armorik83, armorik83, armorik83], [_likr]]
+   *
    * @param {Array<*>} posts
-   * @returns {void}
+   * @returns {Array<*>}
    */
   filterPost(posts: any[]): any[] {
-    const result = posts
-      .map(post => {
+    const organizersPosts = {};
+    posts.map(post => {
         const isAngularPost = post.tags.some(tag => tag.name.match(/ngular/));
         return isAngularPost ? post : void 0;
       })
       .filter(post => post)
-      .filter((post, idx) => idx < 5);
+      .filter((post, idx) => idx < 20)
+      .forEach(post => {
+        organizersPosts[post.user.id] = organizersPosts[post.user.id] || [];
+        if (5 <= organizersPosts[post.user.id].length) { return; }
+        organizersPosts[post.user.id].push(post);
+      });
+
+    const result = [];
+    Object.keys(organizersPosts).forEach(organizer => result.push(organizersPosts[organizer]));
 
     return result;
   }

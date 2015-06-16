@@ -228,29 +228,19 @@ var Component = angular2_1.angular.Component,
 var bootstrap_grid_1 = require("../utils/directives/bootstrap-grid");
 var OrganizersComponent = (function () {
     function OrganizersComponent() {
-        var _this = this;
-        this.organizers = ["armorik83", "_likr", "shinsukeimai"];
-        var promises = this.organizers.map(function (user) {
-            return _this.fetchUser(user);
-        });
-        this.angularPosts = new Promise(function (resolve) {
-            return Promise.all(promises).then(function (res) {
-                console.log(res);
-                resolve(res);
-            });
+        this.angularPosts = this.fetchUser();
+        this.angularPosts.then(function (res) {
+            return console.log(res);
         });
     }
     /**
-     * @param {string} userId
      * @returns {Promise}
      */
-    OrganizersComponent.prototype.fetchUser = function (userId) {
+    OrganizersComponent.prototype.fetchUser = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            fetch("http://qiita.com/api/v2/users/" + userId + "/items?per_page=20", {
-                method: "get",
-                headers: {
-                    "Authorization": "Bearer a5f3b1b50e6d0a60683784899a3704fc82a8a099" }
+            fetch("http://qiita.com/api/v2/items?per_page=20&query=user:_likr%20or%20user:armorik83%20or%20user:shinsukeimai", {
+                method: "get"
             }).then(function (res) {
                 return res.json();
             }).then(function (json) {
@@ -262,10 +252,11 @@ var OrganizersComponent = (function () {
     };
     /**
      * @param {Array<*>} posts
-     * @returns {void}
+     * @returns {Array<*>}
      */
     OrganizersComponent.prototype.filterPost = function (posts) {
-        var result = posts.map(function (post) {
+        var organizersPosts = {};
+        posts.map(function (post) {
             var isAngularPost = post.tags.some(function (tag) {
                 return tag.name.match(/ngular/);
             });
@@ -273,7 +264,17 @@ var OrganizersComponent = (function () {
         }).filter(function (post) {
             return post;
         }).filter(function (post, idx) {
-            return idx < 5;
+            return idx < 20;
+        }).forEach(function (post) {
+            organizersPosts[post.user.id] = organizersPosts[post.user.id] || [];
+            if (5 <= organizersPosts[post.user.id].length) {
+                return;
+            }
+            organizersPosts[post.user.id].push(post);
+        });
+        var result = [];
+        Object.keys(organizersPosts).forEach(function (organizer) {
+            return result.push(organizersPosts[organizer]);
         });
         return result;
     };
