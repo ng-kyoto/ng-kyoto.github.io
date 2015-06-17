@@ -12,7 +12,8 @@ const path = {
 const bin = {
   tsc: `${path.bin}/tsc`,
   lessc: `${path.bin}/lessc`,
-  browserify: `${path.bin}/browserify`
+  browserify: `${path.bin}/browserify`,
+  watchify: `${path.bin}/watchify`
 };
 
 gulp.task('less', shell.task([`${bin.lessc} ${path.styles}/index.less > ./style.css`]));
@@ -28,4 +29,8 @@ gulp.task('default', ['less'], () => {
 
 const babelify = `[ babelify --optional es7.decorators ]`;
 gulp.task('browserify', shell.task([`${bin.browserify} -e ${path.app}/index.js -o ./bundle.js -t ${babelify}`]));
+gulp.task('watchify',   shell.task([`${bin.watchify}   -e ${path.app}/index.js -o ./bundle.js -t ${babelify} -v`]));
 gulp.task('build', done => seq('ts', 'browserify', done));
+gulp.task('watch', ['watchify', 'ts'], () => {
+  gulp.watch([`${opt.example}/**/*.ts`, `${opt.lib}/**/*.ts`], ['ts']);
+});
