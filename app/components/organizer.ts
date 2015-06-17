@@ -1,12 +1,15 @@
 'use strict';
+declare var WeakMap: any;
 import {angular} from '../angular2';
 const {Component, View, NgFor} = angular;
 import {Row, Col} from '../utils/directives/bootstrap-grid';
 
+const privateMap = new WeakMap();
+
 @Component({
   selector: 'organizer',
   properties: {
-    _organizer: 'organizer',
+    organizer: 'organizer',
     _allPosts: 'posts'
   }
 })
@@ -16,16 +19,19 @@ import {Row, Col} from '../utils/directives/bootstrap-grid';
 })
 export class OrganizerComponent {
   posts: any[];
-  organizer: string;
   twitterName: string;
 
   constructor() {
+    privateMap.set(this, {});
     console.log('OrganizerComponent constructor', this);
   }
 
-  set _organizer(v: string) {
-    console.log(v);
-    this.organizer = v;
+  get organizer(): string {
+    return privateMap.organizer;
+  }
+  set organizer(v: string) {
+    privateMap.organizer = v;
+    console.log(this);
   }
 
   set _allPosts(allPosts: any) {
