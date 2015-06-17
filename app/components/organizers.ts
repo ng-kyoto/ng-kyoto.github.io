@@ -2,21 +2,22 @@
 declare function fetch(...arg: any[]);
 import {angular} from '../angular2';
 const {Component, View, NgFor} = angular;
+import {OrganizerComponent} from './organizer';
 import {Row, Col} from '../utils/directives/bootstrap-grid';
 
 @Component({
   selector: 'organizers',
 })
 @View({
-  directives: [Row, Col, NgFor],
+  directives: [OrganizerComponent, Row, Col, NgFor],
   templateUrl: './app/components/organizers.html'
 })
 export class OrganizersComponent {
+  organizers = ['armorik83', '_likr', 'shinsukeimai'];
   angularPosts: any;
 
   constructor() {
     this.angularPosts = this.fetchUser();
-    this.angularPosts.then(res => console.log(res));
   }
 
   /**
@@ -24,12 +25,13 @@ export class OrganizersComponent {
    */
   fetchUser(): Promise<any> {
     return new Promise((resolve, reject) => {
-      fetch(`http://qiita.com/api/v2/items?per_page=20&query=user:_likr%20or%20user:armorik83%20or%20user:shinsukeimai`, {
-        method: 'get'
-      })
-      .then (res  => res.json())
-      .then (json => resolve(this.filterPost(json)))
-      .catch(err  => reject(err));
+      const url = 'http://qiita.com/api/v2/items?per_page=20&query=user:_likr%20or%20user:armorik83%20or%20user:shinsukeimai';
+      const mockurl = '../../mock-request.json';
+
+      fetch(mockurl, {method: 'get'})
+        .then (res  => res.json())
+        .then (json => resolve(this.filterPost(json)))
+        .catch(err  => reject(err));
     });
   }
 

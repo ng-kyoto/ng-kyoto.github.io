@@ -11,7 +11,7 @@ var bootstrap = angular2_1.angular.bootstrap;
 var app_1 = require('./components/app');
 bootstrap(app_1.App);
 
-},{"./angular2":2,"./components/app":4,"./utils/innertext-polyfill":9,"whatwg-fetch":10}],2:[function(require,module,exports){
+},{"./angular2":2,"./components/app":4,"./utils/innertext-polyfill":10,"whatwg-fetch":11}],2:[function(require,module,exports){
 "use strict";
 
 exports.angular = window.angular;
@@ -58,7 +58,7 @@ var AboutComponent = (function () {
 })();
 exports.AboutComponent = AboutComponent;
 
-},{"../angular2":2,"../utils/directives/bootstrap-grid":8}],4:[function(require,module,exports){
+},{"../angular2":2,"../utils/directives/bootstrap-grid":9}],4:[function(require,module,exports){
 "use strict";
 var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
@@ -101,7 +101,7 @@ exports.App = App;
 
 // noop
 
-},{"../angular2":2,"./about":3,"./footer":5,"./header":6,"./organizers":7}],5:[function(require,module,exports){
+},{"../angular2":2,"./about":3,"./footer":5,"./header":6,"./organizers":8}],5:[function(require,module,exports){
 "use strict";
 var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
@@ -141,7 +141,7 @@ exports.FooterComponent = FooterComponent;
 
 // noop
 
-},{"../angular2":2,"../utils/directives/bootstrap-grid":8}],6:[function(require,module,exports){
+},{"../angular2":2,"../utils/directives/bootstrap-grid":9}],6:[function(require,module,exports){
 "use strict";
 
 var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
@@ -199,7 +199,7 @@ exports.HeaderComponent = HeaderComponent;
 
 // noop
 
-},{"../angular2":2,"../utils/directives/bootstrap-grid":8}],7:[function(require,module,exports){
+},{"../angular2":2,"../utils/directives/bootstrap-grid":9}],7:[function(require,module,exports){
 "use strict";
 var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
@@ -226,22 +226,90 @@ var Component = angular2_1.angular.Component,
     View = angular2_1.angular.View,
     NgFor = angular2_1.angular.NgFor;
 var bootstrap_grid_1 = require("../utils/directives/bootstrap-grid");
+var OrganizerComponent = (function () {
+    function OrganizerComponent() {
+        console.log("OrganizerComponent constructor", this);
+    }
+    Object.defineProperty(OrganizerComponent.prototype, "_organizer", {
+        set: function set(v) {
+            console.log(v);
+            this.organizer = v;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(OrganizerComponent.prototype, "_allPosts", {
+        set: function set(allPosts) {
+            var _this = this;
+            allPosts.then(function (res) {
+                res.forEach(function (posts) {
+                    if (!posts) {
+                        return;
+                    }
+                    if (posts[0].user.id !== _this.organizer) {
+                        return;
+                    }
+                    _this.posts = posts;
+                    _this.twitterName = posts[0].user.twitter_screen_name;
+                });
+            });
+        },
+        enumerable: true,
+        configurable: true
+    });
+    OrganizerComponent = __decorate([Component({
+        selector: "organizer",
+        properties: {
+            _organizer: "organizer",
+            _allPosts: "posts"
+        }
+    }), View({
+        directives: [bootstrap_grid_1.Row, bootstrap_grid_1.Col, NgFor],
+        templateUrl: "./app/components/organizer.html"
+    }), __metadata("design:paramtypes", [])], OrganizerComponent);
+    return OrganizerComponent;
+})();
+exports.OrganizerComponent = OrganizerComponent;
+
+},{"../angular2":2,"../utils/directives/bootstrap-grid":9}],8:[function(require,module,exports){
+"use strict";
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
+    switch (arguments.length) {
+        case 2:
+            return decorators.reduceRight(function (o, d) {
+                return d && d(o) || o;
+            }, target);
+        case 3:
+            return decorators.reduceRight(function (o, d) {
+                return (d && d(target, key), void 0);
+            }, void 0);
+        case 4:
+            return decorators.reduceRight(function (o, d) {
+                return d && d(target, key, o) || o;
+            }, desc);
+    }
+};
+var __metadata = undefined && undefined.__metadata || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var angular2_1 = require("../angular2");
+var Component = angular2_1.angular.Component,
+    View = angular2_1.angular.View,
+    NgFor = angular2_1.angular.NgFor;
+var organizer_1 = require("./organizer");
+var bootstrap_grid_1 = require("../utils/directives/bootstrap-grid");
 var OrganizersComponent = (function () {
     function OrganizersComponent() {
+        this.organizers = ["armorik83", "_likr", "shinsukeimai"];
         this.angularPosts = this.fetchUser();
-        this.angularPosts.then(function (res) {
-            return console.log(res);
-        });
     }
-    /**
-     * @returns {Promise}
-     */
     OrganizersComponent.prototype.fetchUser = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            fetch("http://qiita.com/api/v2/items?per_page=20&query=user:_likr%20or%20user:armorik83%20or%20user:shinsukeimai", {
-                method: "get"
-            }).then(function (res) {
+            var url = "http://qiita.com/api/v2/items?per_page=20&query=user:_likr%20or%20user:armorik83%20or%20user:shinsukeimai";
+            var mockurl = "../../mock-request.json";
+            fetch(mockurl, { method: "get" }).then(function (res) {
                 return res.json();
             }).then(function (json) {
                 return resolve(_this.filterPost(json));
@@ -250,10 +318,6 @@ var OrganizersComponent = (function () {
             });
         });
     };
-    /**
-     * @param {Array<*>} posts
-     * @returns {Array<*>}
-     */
     OrganizersComponent.prototype.filterPost = function (posts) {
         var organizersPosts = {};
         posts.map(function (post) {
@@ -280,14 +344,14 @@ var OrganizersComponent = (function () {
     };
     OrganizersComponent = __decorate([Component({
         selector: "organizers" }), View({
-        directives: [bootstrap_grid_1.Row, bootstrap_grid_1.Col, NgFor],
+        directives: [organizer_1.OrganizerComponent, bootstrap_grid_1.Row, bootstrap_grid_1.Col, NgFor],
         templateUrl: "./app/components/organizers.html"
     }), __metadata("design:paramtypes", [])], OrganizersComponent);
     return OrganizersComponent;
 })();
 exports.OrganizersComponent = OrganizersComponent;
 
-},{"../angular2":2,"../utils/directives/bootstrap-grid":8}],8:[function(require,module,exports){
+},{"../angular2":2,"../utils/directives/bootstrap-grid":9,"./organizer":7}],9:[function(require,module,exports){
 "use strict";
 
 var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
@@ -561,7 +625,7 @@ var Col = (function () {
 })();
 exports.Col = Col;
 
-},{"../../angular2":2}],9:[function(require,module,exports){
+},{"../../angular2":2}],10:[function(require,module,exports){
 'use strict';
 // innerText polyfill for Firefox
 (function (document) {
@@ -578,7 +642,7 @@ exports.Col = Col;
     }
 })(document);
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 (function() {
   'use strict';
 

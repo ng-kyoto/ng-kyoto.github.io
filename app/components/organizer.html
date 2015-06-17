@@ -1,8 +1,7 @@
-<row>
-  <bcol xs="12">
-    <h1>Organizers</h1>
-    <div *ng-for="#post of angularPosts | async">{{post[0].body}}
-
-    </div>
-  </bcol>
-</row>
+<h2>{{organizer}}</h2>
+<p>
+  <a href="https://twitter.com/{{twitterName}}">@{{twitterName}}</a>
+</p>
+<div *ng-for="#post of posts">
+  {{post.title}}
+</div>
