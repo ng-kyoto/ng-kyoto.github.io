@@ -227,16 +227,13 @@ var Component = angular2_1.angular.Component,
     NgFor = angular2_1.angular.NgFor;
 var bootstrap_grid_1 = require("../utils/directives/bootstrap-grid");
 var OrganizerComponent = (function () {
-    function OrganizerComponent() {
-        this.privateMap = new WeakMap();
-        this.privateMap.set(this, {});
-    }
+    function OrganizerComponent() {}
     Object.defineProperty(OrganizerComponent.prototype, "organizer", {
         get: function get() {
-            return this.privateMap.organizer;
+            return this._organizer;
         },
         set: function set(v) {
-            this.privateMap.organizer = v;
+            this._organizer = v;
         },
         enumerable: true,
         configurable: true
@@ -288,6 +285,8 @@ var OrganizerComponent = (function () {
     return OrganizerComponent;
 })();
 exports.OrganizerComponent = OrganizerComponent;
+
+// noop
 
 },{"../angular2":2,"../utils/directives/bootstrap-grid":9}],8:[function(require,module,exports){
 "use strict";
