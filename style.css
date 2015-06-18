@@ -275,6 +275,9 @@ footer {
 #copyright {
   background-color: #253238;
   color: #ffffff;
+  text-align: center;
+  padding: 1rem 0;
+  font-weight: 300;
 }
 .under-construction {
   display: none !important;
