@@ -1,9 +1,10 @@
 <row>
   <bcol xs="12">
     <h1>Organizers</h1>
-    <p>{{organizers}}</p>
-    <!-- <div *ng-for="#post of angularPosts | async">
-      {{post[0].body}}
-    </div> -->
+    <organizer
+      *ng-for="#organizer of organizers"
+      [organizer]="organizer"
+      [posts]="angularPosts"
+    ></organizer>
   </bcol>
 </row>

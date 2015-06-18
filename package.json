@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "#",
+    "watch": "gulp watch",
     "build": "gulp build",
     "start": "gulp",
     "dtsm": "dtsm install"
@@ -34,7 +35,8 @@
     "gulp-shell": "^0.4.1",
     "less": "^2.5.1",
     "run-sequence": "^1.1.0",
-    "typescript": "^1.5.0-beta"
+    "typescript": "^1.5.0-beta",
+    "watchify": "^3.2.2"
   },
   "dependencies": {
     "angular2": "^2.0.0-alpha.25",

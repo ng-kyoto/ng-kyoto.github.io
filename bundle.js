@@ -11,7 +11,7 @@ var bootstrap = angular2_1.angular.bootstrap;
 var app_1 = require('./components/app');
 bootstrap(app_1.App);
 
-},{"./angular2":2,"./components/app":4,"./utils/innertext-polyfill":9,"whatwg-fetch":10}],2:[function(require,module,exports){
+},{"./angular2":2,"./components/app":4,"./utils/innertext-polyfill":10,"whatwg-fetch":11}],2:[function(require,module,exports){
 "use strict";
 
 exports.angular = window.angular;
@@ -58,7 +58,7 @@ var AboutComponent = (function () {
 })();
 exports.AboutComponent = AboutComponent;
 
-},{"../angular2":2,"../utils/directives/bootstrap-grid":8}],4:[function(require,module,exports){
+},{"../angular2":2,"../utils/directives/bootstrap-grid":9}],4:[function(require,module,exports){
 "use strict";
 var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
@@ -101,7 +101,7 @@ exports.App = App;
 
 // noop
 
-},{"../angular2":2,"./about":3,"./footer":5,"./header":6,"./organizers":7}],5:[function(require,module,exports){
+},{"../angular2":2,"./about":3,"./footer":5,"./header":6,"./organizers":8}],5:[function(require,module,exports){
 "use strict";
 var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
@@ -141,7 +141,7 @@ exports.FooterComponent = FooterComponent;
 
 // noop
 
-},{"../angular2":2,"../utils/directives/bootstrap-grid":8}],6:[function(require,module,exports){
+},{"../angular2":2,"../utils/directives/bootstrap-grid":9}],6:[function(require,module,exports){
 "use strict";
 
 var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
@@ -199,7 +199,7 @@ exports.HeaderComponent = HeaderComponent;
 
 // noop
 
-},{"../angular2":2,"../utils/directives/bootstrap-grid":8}],7:[function(require,module,exports){
+},{"../angular2":2,"../utils/directives/bootstrap-grid":9}],7:[function(require,module,exports){
 "use strict";
 var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
@@ -226,32 +226,104 @@ var Component = angular2_1.angular.Component,
     View = angular2_1.angular.View,
     NgFor = angular2_1.angular.NgFor;
 var bootstrap_grid_1 = require("../utils/directives/bootstrap-grid");
+var OrganizerComponent = (function () {
+    function OrganizerComponent() {
+        this.console = console;
+        this.privateMap = new WeakMap();
+        this.privateMap.set(this, {});
+    }
+    Object.defineProperty(OrganizerComponent.prototype, "organizer", {
+        get: function get() {
+            return this.privateMap.organizer;
+        },
+        set: function set(v) {
+            this.privateMap.organizer = v;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(OrganizerComponent.prototype, "organizerAvatar", {
+        get: function get() {
+            return "./app/images/avatar-" + this.organizer + ".png";
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(OrganizerComponent.prototype, "allPosts", {
+        set: function set(allPosts) {
+            var _this = this;
+            allPosts.then(function (res) {
+                res.forEach(function (posts) {
+                    if (!posts) {
+                        return;
+                    }
+                    if (posts[0].user.id !== _this.organizer) {
+                        return;
+                    }
+                    _this.posts = posts;
+                    _this.twitterName = posts[0].user.twitter_screen_name;
+                });
+            });
+        },
+        enumerable: true,
+        configurable: true
+    });
+    OrganizerComponent = __decorate([Component({
+        selector: "organizer",
+        properties: {
+            organizer: "organizer",
+            allPosts: "posts"
+        }
+    }), View({
+        directives: [bootstrap_grid_1.Row, bootstrap_grid_1.Col, NgFor],
+        templateUrl: "./app/components/organizer.html"
+    }), __metadata("design:paramtypes", [])], OrganizerComponent);
+    return OrganizerComponent;
+})();
+exports.OrganizerComponent = OrganizerComponent;
+
+},{"../angular2":2,"../utils/directives/bootstrap-grid":9}],8:[function(require,module,exports){
+"use strict";
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
+    switch (arguments.length) {
+        case 2:
+            return decorators.reduceRight(function (o, d) {
+                return d && d(o) || o;
+            }, target);
+        case 3:
+            return decorators.reduceRight(function (o, d) {
+                return (d && d(target, key), void 0);
+            }, void 0);
+        case 4:
+            return decorators.reduceRight(function (o, d) {
+                return d && d(target, key, o) || o;
+            }, desc);
+    }
+};
+var __metadata = undefined && undefined.__metadata || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var angular2_1 = require("../angular2");
+var Component = angular2_1.angular.Component,
+    View = angular2_1.angular.View,
+    NgFor = angular2_1.angular.NgFor;
+var organizer_1 = require("./organizer");
+var bootstrap_grid_1 = require("../utils/directives/bootstrap-grid");
 var OrganizersComponent = (function () {
     function OrganizersComponent() {
-        var _this = this;
         this.organizers = ["armorik83", "_likr", "shinsukeimai"];
-        var promises = this.organizers.map(function (user) {
-            return _this.fetchUser(user);
-        });
-        this.angularPosts = new Promise(function (resolve) {
-            return Promise.all(promises).then(function (res) {
-                console.log(res);
-                resolve(res);
-            });
-        });
+        this.angularPosts = this.fetchUser();
     }
     /**
-     * @param {string} userId
      * @returns {Promise}
      */
-    OrganizersComponent.prototype.fetchUser = function (userId) {
+    OrganizersComponent.prototype.fetchUser = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            fetch("http://qiita.com/api/v2/users/" + userId + "/items?per_page=20", {
-                method: "get",
-                headers: {
-                    "Authorization": "Bearer a5f3b1b50e6d0a60683784899a3704fc82a8a099" }
-            }).then(function (res) {
+            var url = "http://qiita.com/api/v2/items?per_page=20&query=user:_likr%20or%20user:armorik83%20or%20user:shinsukeimai";
+            var mockurl = "../../mock-request.json";
+            fetch(mockurl, { method: "get" }).then(function (res) {
                 return res.json();
             }).then(function (json) {
                 return resolve(_this.filterPost(json));
@@ -261,11 +333,15 @@ var OrganizersComponent = (function () {
         });
     };
     /**
+     * returns exp.
+     * [[imai, imai, imai], [armorik83, armorik83, armorik83], [_likr]]
+     *
      * @param {Array<*>} posts
-     * @returns {void}
+     * @returns {Array<*>}
      */
     OrganizersComponent.prototype.filterPost = function (posts) {
-        var result = posts.map(function (post) {
+        var organizersPosts = {};
+        posts.map(function (post) {
             var isAngularPost = post.tags.some(function (tag) {
                 return tag.name.match(/ngular/);
             });
@@ -273,20 +349,31 @@ var OrganizersComponent = (function () {
         }).filter(function (post) {
             return post;
         }).filter(function (post, idx) {
-            return idx < 5;
+            return idx < 20;
+        }).forEach(function (post) {
+            organizersPosts[post.user.id] = organizersPosts[post.user.id] || [];
+            if (5 <= organizersPosts[post.user.id].length) {
+                return;
+            }
+            organizersPosts[post.user.id].push(post);
         });
+        var result = [];
+        Object.keys(organizersPosts).forEach(function (organizer) {
+            return result.push(organizersPosts[organizer]);
+        });
+        // The return type must be an Array<Array<QiitaPost>>
         return result;
     };
     OrganizersComponent = __decorate([Component({
         selector: "organizers" }), View({
-        directives: [bootstrap_grid_1.Row, bootstrap_grid_1.Col, NgFor],
+        directives: [organizer_1.OrganizerComponent, bootstrap_grid_1.Row, bootstrap_grid_1.Col, NgFor],
         templateUrl: "./app/components/organizers.html"
     }), __metadata("design:paramtypes", [])], OrganizersComponent);
     return OrganizersComponent;
 })();
 exports.OrganizersComponent = OrganizersComponent;
 
-},{"../angular2":2,"../utils/directives/bootstrap-grid":8}],8:[function(require,module,exports){
+},{"../angular2":2,"../utils/directives/bootstrap-grid":9,"./organizer":7}],9:[function(require,module,exports){
 "use strict";
 
 var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
@@ -560,7 +647,7 @@ var Col = (function () {
 })();
 exports.Col = Col;
 
-},{"../../angular2":2}],9:[function(require,module,exports){
+},{"../../angular2":2}],10:[function(require,module,exports){
 'use strict';
 // innerText polyfill for Firefox
 (function (document) {
@@ -577,7 +664,7 @@ exports.Col = Col;
     }
 })(document);
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 (function() {
   'use strict';
 
