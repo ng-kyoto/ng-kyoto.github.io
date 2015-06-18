@@ -226,24 +226,30 @@ var Component = angular2_1.angular.Component,
     View = angular2_1.angular.View,
     NgFor = angular2_1.angular.NgFor;
 var bootstrap_grid_1 = require("../utils/directives/bootstrap-grid");
-var privateMap = new WeakMap();
 var OrganizerComponent = (function () {
     function OrganizerComponent() {
-        privateMap.set(this, {});
-        console.log("OrganizerComponent constructor", this);
+        this.console = console;
+        this.privateMap = new WeakMap();
+        this.privateMap.set(this, {});
     }
     Object.defineProperty(OrganizerComponent.prototype, "organizer", {
         get: function get() {
-            return privateMap.organizer;
+            return this.privateMap.organizer;
         },
         set: function set(v) {
-            privateMap.organizer = v;
-            console.log(this);
+            this.privateMap.organizer = v;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(OrganizerComponent.prototype, "_allPosts", {
+    Object.defineProperty(OrganizerComponent.prototype, "organizerAvatar", {
+        get: function get() {
+            return "./app/images/avatar-" + this.organizer + ".png";
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(OrganizerComponent.prototype, "allPosts", {
         set: function set(allPosts) {
             var _this = this;
             allPosts.then(function (res) {
@@ -266,7 +272,7 @@ var OrganizerComponent = (function () {
         selector: "organizer",
         properties: {
             organizer: "organizer",
-            _allPosts: "posts"
+            allPosts: "posts"
         }
     }), View({
         directives: [bootstrap_grid_1.Row, bootstrap_grid_1.Col, NgFor],
@@ -309,6 +315,9 @@ var OrganizersComponent = (function () {
         this.organizers = ["armorik83", "_likr", "shinsukeimai"];
         this.angularPosts = this.fetchUser();
     }
+    /**
+     * @returns {Promise}
+     */
     OrganizersComponent.prototype.fetchUser = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -323,6 +332,13 @@ var OrganizersComponent = (function () {
             });
         });
     };
+    /**
+     * returns exp.
+     * [[imai, imai, imai], [armorik83, armorik83, armorik83], [_likr]]
+     *
+     * @param {Array<*>} posts
+     * @returns {Array<*>}
+     */
     OrganizersComponent.prototype.filterPost = function (posts) {
         var organizersPosts = {};
         posts.map(function (post) {
@@ -345,6 +361,7 @@ var OrganizersComponent = (function () {
         Object.keys(organizersPosts).forEach(function (organizer) {
             return result.push(organizersPosts[organizer]);
         });
+        // The return type must be an Array<Array<QiitaPost>>
         return result;
     };
     OrganizersComponent = __decorate([Component({

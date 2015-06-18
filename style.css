@@ -177,6 +177,90 @@ about p {
 organizers {
   display: block;
 }
+organizer {
+  display: block;
+  margin: 2rem;
+}
+organizer h2 {
+  margin: 2rem;
+}
+organizer a {
+  transition-property: color;
+  transition-duration: .2s;
+  transition-timing-function: linear;
+}
+organizer a:hover {
+  transition-duration: .05s;
+}
+organizer .organizer-card {
+  background: #f5f8f8;
+  color: #445a64;
+  border-radius: 6px;
+}
+@media only screen and (max-width: 767px) {
+  organizer .organizer-card {
+    padding: 0 1rem 2rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  organizer .organizer-card {
+    padding: 0 2rem 2rem;
+  }
+}
+organizer .twitter-name {
+  line-height: 2em;
+}
+organizer .avatar {
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0 auto 5rem;
+  padding: 4px;
+  width: 132px;
+  height: 132px;
+  background: none;
+  border-radius: 6px;
+  transition-property: background-color;
+  transition-duration: .2s;
+  transition-timing-function: linear;
+}
+organizer .avatar:hover {
+  background: #dbdede;
+  transition-duration: .05s;
+}
+organizer .avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+organizer .qiita-body {
+  font-size: .8rem;
+  color: #97aaa7;
+}
+@media only screen and (max-width: 767px) {
+  organizer ul {
+    padding: 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  organizer ul {
+    padding: 0 0 0 2em;
+  }
+}
+organizer li {
+  list-style: none;
+  text-align: left;
+  margin: 0 0 .5em;
+}
+@media only screen and (max-width: 767px) {
+  organizer li {
+    margin: 0 0 2.5em;
+  }
+}
+@media only screen and (min-width: 768px) {
+  organizer li {
+    margin: 0 0 2.0em;
+  }
+}
 footer {
   background-color: #36474f;
   color: #ffffff;

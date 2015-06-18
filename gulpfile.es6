@@ -30,7 +30,15 @@ gulp.task('default', ['less'], () => {
 const babelify = `[ babelify --optional es7.decorators ]`;
 gulp.task('browserify', shell.task([`${bin.browserify} -e ${path.app}/index.js -o ./bundle.js -t ${babelify}`]));
 gulp.task('watchify',   shell.task([`${bin.watchify}   -e ${path.app}/index.js -o ./bundle.js -t ${babelify} -v`]));
-gulp.task('build', done => seq('ts', 'browserify', done));
-gulp.task('watch', ['watchify', 'ts'], () => {
-  gulp.watch([`${opt.example}/**/*.ts`, `${opt.lib}/**/*.ts`], ['ts']);
+gulp.task('build', done => seq(['ts', 'less'], 'browserify', done));
+gulp.task('_watch', ['ts', 'less'], () => {
+  gulp
+    .watch([`${path.app}/**/*.ts`],   ['ts'])
+    .on('error', err => process.exit(1));
+
+  gulp
+    .watch([`${path.app}/**/*.less`], ['less'])
+    .on('error', err => process.exit(1));
 });
+
+gulp.task('watch', done => seq('_watch', 'watchify', done));

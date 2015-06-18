@@ -4,13 +4,11 @@ import {angular} from '../angular2';
 const {Component, View, NgFor} = angular;
 import {Row, Col} from '../utils/directives/bootstrap-grid';
 
-const privateMap = new WeakMap();
-
 @Component({
   selector: 'organizer',
   properties: {
     organizer: 'organizer',
-    _allPosts: 'posts'
+    allPosts: 'posts'
   }
 })
 @View({
@@ -19,22 +17,28 @@ const privateMap = new WeakMap();
 })
 export class OrganizerComponent {
   posts: any[];
+  console: any;
   twitterName: string;
+  privateMap: typeof WeakMap;
 
   constructor() {
-    privateMap.set(this, {});
-    console.log('OrganizerComponent constructor', this);
+    this.console = console;
+    this.privateMap = new WeakMap();
+    this.privateMap.set(this, {});
   }
 
   get organizer(): string {
-    return privateMap.organizer;
+    return this.privateMap.organizer;
   }
   set organizer(v: string) {
-    privateMap.organizer = v;
-    console.log(this);
+    this.privateMap.organizer = v;
   }
 
-  set _allPosts(allPosts: any) {
+  get organizerAvatar(): string {
+    return `./app/images/avatar-${this.organizer}.png`;
+  }
+
+  set allPosts(allPosts: any) {
     allPosts.then((res: any[][]) => {
       res.forEach(posts => {
         if (!posts) { return; }
