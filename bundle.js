@@ -176,9 +176,7 @@ var ApplyButton = (function () {
     }
     ApplyButton = __decorate([Component({
         selector: "apply-button",
-        properties: {
-            "href": "href"
-        }
+        properties: ["href"]
     }), View({
         directives: [bootstrap_grid_1.Row, bootstrap_grid_1.Col],
         template: "\n  <row>\n    <bcol all=\"12 8 6 4\" all-offset=\"0 2 3 4\">\n      <a class=\"apply\" href=\"{{href}}\">{{label}}</a>\n    </bcol>\n  </row>"
@@ -274,7 +272,7 @@ var OrganizerComponent = (function () {
     });
     OrganizerComponent = __decorate([Component({
         selector: "organizer",
-        properties: ["organizer: organizer", "allPosts: posts"]
+        properties: ["organizer", "allPosts: posts"]
     }), View({
         directives: [bootstrap_grid_1.Row, bootstrap_grid_1.Col, NgFor],
         templateUrl: "./app/components/organizer.html"
@@ -623,7 +621,7 @@ var Col = (function () {
     });
     Col = __decorate([Directive({
         selector: colTag,
-        properties: ["xs: xs", "sm: sm", "md: md", "lg: lg", "xsOffset: xsOffset", "smOffset: smOffset", "mdOffset: mdOffset", "lgOffset: lgOffset", "xsPush: xsPush", "smPush: smPush", "mdPush: mdPush", "lgPush: lgPush", "xsPull: xsPull", "smPull: smPull", "mdPull: mdPull", "lgPull: lgPull", "all: all", "allOffset: allOffset", "allPush: allPush", "allPull: allPull"]
+        properties: ["xs", "sm", "md", "lg", "xsOffset", "smOffset", "mdOffset", "lgOffset", "xsPush", "smPush", "mdPush", "lgPush", "xsPull", "smPull", "mdPull", "lgPull", "all", "allOffset", "allPush", "allPull"]
     }), __metadata("design:paramtypes", [ViewContainerRef])], Col);
     return Col;
 })();

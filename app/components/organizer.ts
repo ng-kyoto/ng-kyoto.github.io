@@ -6,7 +6,7 @@ import {Row, Col} from '../utils/directives/bootstrap-grid';
 @Component({
   selector: 'organizer',
   properties: [
-    'organizer: organizer',
+    'organizer',
     'allPosts: posts'
   ]
 })

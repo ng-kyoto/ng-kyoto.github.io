@@ -6,9 +6,9 @@ import {Row, Col} from '../utils/directives/bootstrap-grid';
 
 @Component({
   selector: 'apply-button',
-  properties: {
-    'href': 'href'
-  }
+  properties: [
+    'href'
+  ]
 })
 @View({
   directives: [Row, Col],
