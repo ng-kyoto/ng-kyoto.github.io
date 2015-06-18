@@ -31,28 +31,28 @@ export class Row {
 
 @Directive({
   selector: colTag,
-  properties: {
-    'xs':        'xs',
-    'sm':        'sm',
-    'md':        'md',
-    'lg':        'lg',
-    'xsOffset':  'xsOffset',
-    'smOffset':  'smOffset',
-    'mdOffset':  'mdOffset',
-    'lgOffset':  'lgOffset',
-    'xsPush':    'xsPush',
-    'smPush':    'smPush',
-    'mdPush':    'mdPush',
-    'lgPush':    'lgPush',
-    'xsPull':    'xsPull',
-    'smPull':    'smPull',
-    'mdPull':    'mdPull',
-    'lgPull':    'lgPull',
-    'all':       'all',
-    'allOffset': 'allOffset',
-    'allPush':   'allPush',
-    'allPull':   'allPull'
-  }
+    properties: [
+    'xs: xs',
+    'sm: sm',
+    'md: md',
+    'lg: lg',
+    'xsOffset: xsOffset',
+    'smOffset: smOffset',
+    'mdOffset: mdOffset',
+    'lgOffset: lgOffset',
+    'xsPush: xsPush',
+    'smPush: smPush',
+    'mdPush: mdPush',
+    'lgPush: lgPush',
+    'xsPull: xsPull',
+    'smPull: smPull',
+    'mdPull: mdPull',
+    'lgPull: lgPull',
+    'all: all',
+    'allOffset: allOffset',
+    'allPush: allPush',
+    'allPull: allPull'
+  ]
 })
 export class Col {
   constructor(public viewContainer: ViewContainerRef) {

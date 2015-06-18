@@ -248,7 +248,7 @@ var OrganizerComponent = (function () {
     });
     Object.defineProperty(OrganizerComponent.prototype, "organizerAvatar", {
         get: function get() {
-            return "./app/images/avatar-" + this.organizer.id + ".png";
+            return "./app/images/avatar-" + this._organizer.id + ".png";
         },
         enumerable: true,
         configurable: true
@@ -274,10 +274,7 @@ var OrganizerComponent = (function () {
     });
     OrganizerComponent = __decorate([Component({
         selector: "organizer",
-        properties: {
-            organizer: "organizer",
-            allPosts: "posts"
-        }
+        properties: ["organizer: organizer", "allPosts: posts"]
     }), View({
         directives: [bootstrap_grid_1.Row, bootstrap_grid_1.Col, NgFor],
         templateUrl: "./app/components/organizer.html"
@@ -626,28 +623,7 @@ var Col = (function () {
     });
     Col = __decorate([Directive({
         selector: colTag,
-        properties: {
-            "xs": "xs",
-            "sm": "sm",
-            "md": "md",
-            "lg": "lg",
-            "xsOffset": "xsOffset",
-            "smOffset": "smOffset",
-            "mdOffset": "mdOffset",
-            "lgOffset": "lgOffset",
-            "xsPush": "xsPush",
-            "smPush": "smPush",
-            "mdPush": "mdPush",
-            "lgPush": "lgPush",
-            "xsPull": "xsPull",
-            "smPull": "smPull",
-            "mdPull": "mdPull",
-            "lgPull": "lgPull",
-            "all": "all",
-            "allOffset": "allOffset",
-            "allPush": "allPush",
-            "allPull": "allPull"
-        }
+        properties: ["xs: xs", "sm: sm", "md: md", "lg: lg", "xsOffset: xsOffset", "smOffset: smOffset", "mdOffset: mdOffset", "lgOffset: lgOffset", "xsPush: xsPush", "smPush: smPush", "mdPush: mdPush", "lgPush: lgPush", "xsPull: xsPull", "smPull: smPull", "mdPull: mdPull", "lgPull: lgPull", "all: all", "allOffset: allOffset", "allPush: allPush", "allPull: allPull"]
     }), __metadata("design:paramtypes", [ViewContainerRef])], Col);
     return Col;
 })();

@@ -5,10 +5,10 @@ import {Row, Col} from '../utils/directives/bootstrap-grid';
 
 @Component({
   selector: 'organizer',
-  properties: {
-    organizer: 'organizer',
-    allPosts: 'posts'
-  }
+  properties: [
+    'organizer: organizer',
+    'allPosts: posts'
+  ]
 })
 @View({
   directives: [Row, Col, NgFor],
@@ -31,12 +31,12 @@ export class OrganizerComponent {
   }
 
   get organizerHead(): string {
-    const org = this.organizer
+    const org = this.organizer;
     return (org.realName) ? `${org.realName} (${org.id})` : org.id;
   }
 
   get organizerAvatar(): string {
-    return `./app/images/avatar-${this.organizer.id}.png`;
+    return `./app/images/avatar-${this._organizer.id}.png`;
   }
 
   set allPosts(allPosts: any) {
