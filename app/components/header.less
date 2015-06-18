@@ -56,9 +56,12 @@ ng-kyoto-header {
     text-align: center;
     font-weight: normal;
 
-    @media @xs  { font-size: 1.1rem; }
+    @media @xs  { font-size: 1.0rem; }
     @media @sm_ { font-size: 1.4rem; }
-    line-height: 2rem;
+
+    @media @xs  { line-height: 1.6rem; }
+    @media @sm_ { line-height: 2.0rem; }
+
     color: @color-deep-green;
 
     @logo-w: 220px;
@@ -88,6 +91,7 @@ ng-kyoto-header {
     @media @xs {
       margin-left:  1em;
       margin-right: 1em;
+      font-size: .9rem;
     }
 
     &:hover {

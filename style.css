@@ -117,7 +117,6 @@ ng-kyoto-header h1 {
   background: url("app/images/ng-kyoto-hero-logo.png") top center no-repeat;
   text-align: center;
   font-weight: normal;
-  line-height: 2rem;
   color: #223606;
   background-size: 220px 234px;
   height: 234px;
@@ -126,12 +125,22 @@ ng-kyoto-header h1 {
 }
 @media only screen and (max-width: 767px) {
   #hero h2 {
-    font-size: 1.1rem;
+    font-size: 1.0rem;
   }
 }
 @media only screen and (min-width: 768px) {
   #hero h2 {
     font-size: 1.4rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #hero h2 {
+    line-height: 1.6rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  #hero h2 {
+    line-height: 2.0rem;
   }
 }
 #hero .apply {
@@ -154,6 +163,7 @@ ng-kyoto-header h1 {
   #hero .apply {
     margin-left: 1em;
     margin-right: 1em;
+    font-size: .9rem;
   }
 }
 #hero .apply:hover {
