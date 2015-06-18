@@ -1,8 +1,10 @@
-<row>
-  <bcol xs="12">
-    <h1>About</h1>
-    <p id="message-from-kyoto">
-      <span *ng-for="#line of message" [class.short]="line.length < 40">{{line}}<br></span>
-    </p>
-  </bcol>
-</row>
+<div class="container-fluid">
+  <row>
+    <bcol xs="12">
+      <h1>About</h1>
+      <p id="message-from-kyoto">
+        <span *ng-for="#line of message" [class.short]="line.length < 40">{{line}}<br></span>
+      </p>
+    </bcol>
+  </row>
+</div>

@@ -1,10 +1,12 @@
-<row>
-  <bcol xs="12">
-    <h1>Organizers</h1>
-    <organizer
-      *ng-for="#organizer of organizers"
-      [organizer]="organizer"
-      [posts]="angularPosts"
-    ></organizer>
-  </bcol>
-</row>
+<div class="container-fluid">
+  <row>
+    <bcol xs="12">
+      <h1>Organizers</h1>
+      <organizer
+        *ng-for="#organizer of organizers"
+        [organizer]="organizer"
+        [posts]="angularPosts"
+      ></organizer>
+    </bcol>
+  </row>
+</div>
