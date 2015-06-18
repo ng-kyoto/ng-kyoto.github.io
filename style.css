@@ -276,6 +276,11 @@ organizer li {
     margin: 0 0 2.5em;
   }
 }
+organizer .description p {
+  padding: 1rem;
+  background-color: #e9f0f0;
+  border-radius: 4px;
+}
 footer {
   background-color: #36474f;
   color: #ffffff;

@@ -228,7 +228,6 @@ var Component = angular2_1.angular.Component,
 var bootstrap_grid_1 = require("../utils/directives/bootstrap-grid");
 var OrganizerComponent = (function () {
     function OrganizerComponent() {
-        this.console = console;
         this.privateMap = new WeakMap();
         this.privateMap.set(this, {});
     }
@@ -242,9 +241,17 @@ var OrganizerComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(OrganizerComponent.prototype, "organizerHead", {
+        get: function get() {
+            var org = this.organizer;
+            return org.realName ? org.realName + " (" + org.id + ")" : org.id;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(OrganizerComponent.prototype, "organizerAvatar", {
         get: function get() {
-            return "./app/images/avatar-" + this.organizer + ".png";
+            return "./app/images/avatar-" + this.organizer.id + ".png";
         },
         enumerable: true,
         configurable: true
@@ -257,7 +264,7 @@ var OrganizerComponent = (function () {
                     if (!posts) {
                         return;
                     }
-                    if (posts[0].user.id !== _this.organizer) {
+                    if (posts[0].user.id !== _this.organizer.id) {
                         return;
                     }
                     _this.posts = posts;
@@ -312,7 +319,7 @@ var organizer_1 = require("./organizer");
 var bootstrap_grid_1 = require("../utils/directives/bootstrap-grid");
 var OrganizersComponent = (function () {
     function OrganizersComponent() {
-        this.organizers = ["armorik83", "_likr", "shinsukeimai"];
+        this.organizers = [{ id: "armorik83", realName: "奥野 賢太郎", description: "ng-kyoto代表 Angular芸人" }, { id: "_likr", description: "やせいのプログラマー" }, { id: "shinsukeimai", description: "体育会系プログラマ" }];
         this.angularPosts = this.fetchUser();
     }
     /**

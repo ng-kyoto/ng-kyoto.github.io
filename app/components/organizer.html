@@ -1,19 +1,22 @@
 <row>
-  <bcol xs="12" sm="10" sm-offset="1" md="8" md-offset="2" lg="6" lg-offset="3" class="organizer-card">
-    <h2>{{organizer}}</h2>
+  <bcol all="12 10 8 6" all-offset="0 1 2 3" class="organizer-card">
+    <h2>{{organizerHead}}</h2>
 
     <row>
-      <bcol xs="12" sm="12" md="2" lg="3" class="avatar-side">
+      <bcol all="12 12 2 3" class="avatar-side">
         <div class="avatar"><a href="https://twitter.com/{{twitterName}}" style="display: block">
           <img [src]="organizerAvatar">
           <span class="twitter-name">@{{twitterName}}</span>
         </a></div>
       </bcol>
-      <bcol xs="12" sm="12" md="10" lg="9" class="qiita-side">
+      <bcol all="12 12 10 9" class="qiita-side">
         <ul><li *ng-for="#post of posts">
-          <a [href]="post.url">{{console.log(post)}}{{post.title}}</a><br>
+          <a [href]="post.url">{{post.title}}</a><br>
           <span class="qiita-body">{{post.body.slice(0, 100)}}…</span>
         </li></ul>
+      </bcol>
+      <bcol xs="12" class="description">
+        <p>{{organizer.description}}</p>
       </bcol>
     <row>
   </bcol>

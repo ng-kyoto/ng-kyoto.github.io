@@ -13,7 +13,11 @@ import {Row, Col} from '../utils/directives/bootstrap-grid';
   templateUrl: './app/components/organizers.html'
 })
 export class OrganizersComponent {
-  organizers = ['armorik83', '_likr', 'shinsukeimai'];
+  organizers = [
+    {id: 'armorik83', realName: '奥野 賢太郎', description: 'ng-kyoto代表 Angular芸人'},
+    {id: '_likr', description: 'やせいのプログラマー'},
+    {id: 'shinsukeimai', description: '体育会系プログラマ'},
+  ];
   angularPosts: any;
 
   constructor() {

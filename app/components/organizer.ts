@@ -17,32 +17,35 @@ import {Row, Col} from '../utils/directives/bootstrap-grid';
 })
 export class OrganizerComponent {
   posts: any[];
-  console: any;
   twitterName: string;
   privateMap: typeof WeakMap;
 
   constructor() {
-    this.console = console;
     this.privateMap = new WeakMap();
     this.privateMap.set(this, {});
   }
 
-  get organizer(): string {
-    return this.privateMap.organizer;
+  get organizer(): any {
+    return this.privateMap.organizer
   }
-  set organizer(v: string) {
+  set organizer(v: any) {
     this.privateMap.organizer = v;
   }
 
+  get organizerHead(): string {
+    const org = this.organizer
+    return (org.realName) ? `${org.realName} (${org.id})` : org.id;
+  }
+
   get organizerAvatar(): string {
-    return `./app/images/avatar-${this.organizer}.png`;
+    return `./app/images/avatar-${this.organizer.id}.png`;
   }
 
   set allPosts(allPosts: any) {
     allPosts.then((res: any[][]) => {
       res.forEach(posts => {
         if (!posts) { return; }
-        if (posts[0].user.id !== this.organizer) { return; }
+        if (posts[0].user.id !== this.organizer.id) { return; }
 
         this.posts = posts;
         this.twitterName = posts[0].user.twitter_screen_name
