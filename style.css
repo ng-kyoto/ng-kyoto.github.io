@@ -236,14 +236,19 @@ organizer .qiita-body {
   font-size: .8rem;
   color: #97aaa7;
 }
-@media only screen and (max-width: 767px) {
-  organizer ul {
-    padding: 0;
-  }
-}
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1129px) {
   organizer ul {
     padding: 0 0 0 2em;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  organizer ul {
+    padding: 0 0 0 4em;
+  }
+}
+@media only screen and (max-width: 767px), only screen and (min-width: 768px) and (max-width: 991px) {
+  organizer ul {
+    padding: 0;
   }
 }
 organizer li {
@@ -251,14 +256,14 @@ organizer li {
   text-align: left;
   margin: 0 0 .5em;
 }
-@media only screen and (max-width: 767px) {
-  organizer li {
-    margin: 0 0 2.5em;
-  }
-}
 @media only screen and (min-width: 768px) {
   organizer li {
     margin: 0 0 2.0em;
+  }
+}
+@media only screen and (max-width: 767px) {
+  organizer li {
+    margin: 0 0 2.5em;
   }
 }
 footer {
