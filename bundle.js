@@ -313,7 +313,7 @@ var organizer_1 = require("./organizer");
 var bootstrap_grid_1 = require("../utils/directives/bootstrap-grid");
 var OrganizersComponent = (function () {
     function OrganizersComponent() {
-        this.organizers = [{ id: "armorik83", realName: "奥野 賢太郎", description: "ng-kyoto代表 Angular芸人" }, { id: "_likr", description: "やせいのプログラマー" }, { id: "shinsukeimai", description: "体育会系プログラマ" }];
+        this.organizers = [{ id: "armorik83", realName: "奥野 賢太郎", description: "ng-kyoto代表 Angular芸人" }, { id: "_likr", realName: "尾上 洋介", description: "やせいのプログラマー" }, { id: "shinsukeimai", realName:"今井 晨介", description: "体育会系プログラマ" }];
         this.angularPosts = this.fetchUser();
     }
     /**
