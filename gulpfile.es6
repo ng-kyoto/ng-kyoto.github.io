@@ -18,7 +18,7 @@ const bin = {
 
 gulp.task('less', shell.task([`${bin.lessc} ${path.styles}/index.less > ./style.css`]));
 
-const tsc = `${bin.tsc} -t es5 -m commonjs --emitDecoratorMetadata --suppressImplicitAnyIndexErrors`
+const tsc = `${bin.tsc} -t es5 -m commonjs --experimentalDecorators --emitDecoratorMetadata --suppressImplicitAnyIndexErrors`
 gulp.task('ts', shell.task([`find ${path.app} -name "*.ts" | xargs ${tsc}`]));
 
 gulp.task('default', ['less'], () => {
