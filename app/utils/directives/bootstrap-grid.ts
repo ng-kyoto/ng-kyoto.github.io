@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 })
 export class Row {
   constructor(viewContainer: ViewContainerRef) {
-    const elm = (<any>viewContainer).element.domElement;
+    const elm = (<any>viewContainer).element.nativeElement;
     elm.classList.add('row');
   }
 }
@@ -60,7 +60,7 @@ export class Col {
   }
 
   addClass(cls: string) {
-    (<any>this.viewContainer).element.domElement.classList.add(cls);
+    (<any>this.viewContainer).element.nativeElement.classList.add(cls);
   }
 
   set xs(n) { if (+n === 0) { return; } this.addClass(`col-xs-${n}`); }

@@ -1,1 +1,1 @@
-export const angular = (<any>window).angular;
+export const angular = (<any>window).ng;

@@ -23,7 +23,7 @@ class ApplyButton {
   label: string;
 
   constructor(viewContainer: ViewContainerRef) {
-    this.label = (<any>viewContainer).element.domElement.innerText;
+    this.label = (<any>viewContainer).element.nativeElement.innerText;
   }
 }
 
