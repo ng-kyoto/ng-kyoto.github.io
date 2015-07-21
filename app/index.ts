@@ -3,7 +3,6 @@
 
 declare var require: any;
 require('whatwg-fetch');
-// const reflect = require('reflect-metadata');
 import './utils/innertext-polyfill';
 import {angular} from './angular2';
 const {bootstrap} = angular;
