@@ -4,7 +4,6 @@
 'use strict';
 
 require('whatwg-fetch');
-// const reflect = require('reflect-metadata');
 require('./utils/innertext-polyfill');
 var angular2_1 = require('./angular2');
 var bootstrap = angular2_1.angular.bootstrap;
@@ -14,7 +13,7 @@ bootstrap(app_1.App);
 },{"./angular2":2,"./components/app":4,"./utils/innertext-polyfill":10,"whatwg-fetch":11}],2:[function(require,module,exports){
 "use strict";
 
-exports.angular = window.angular;
+exports.angular = window.ng;
 
 },{}],3:[function(require,module,exports){
 "use strict";
@@ -172,7 +171,7 @@ var Component = angular2_1.angular.Component,
 var bootstrap_grid_1 = require("../utils/directives/bootstrap-grid");
 var ApplyButton = (function () {
     function ApplyButton(viewContainer) {
-        this.label = viewContainer.element.domElement.innerText;
+        this.label = viewContainer.element.nativeElement.innerText;
     }
     ApplyButton = __decorate([Component({
         selector: "apply-button",
@@ -313,7 +312,7 @@ var organizer_1 = require("./organizer");
 var bootstrap_grid_1 = require("../utils/directives/bootstrap-grid");
 var OrganizersComponent = (function () {
     function OrganizersComponent() {
-        this.organizers = [{ id: "armorik83", realName: "奥野 賢太郎", description: "ng-kyoto代表 Angular芸人" }, { id: "_likr", realName: "尾上 洋介", description: "やせいのプログラマー" }, { id: "shinsukeimai", realName:"今井 晨介", description: "体育会系プログラマ" }];
+        this.organizers = [{ id: "armorik83", realName: "奥野 賢太郎", description: "ng-kyoto代表 Angular芸人" }, { id: "_likr", realName: "尾上 洋介", description: "やせいのプログラマー" }, { id: "shinsukeimai", realName: "今井 晨介", description: "体育会系プログラマ" }];
         this.angularPosts = this.fetchUser();
     }
     /**
@@ -414,7 +413,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 var Row = (function () {
     function Row(viewContainer) {
-        var elm = viewContainer.element.domElement;
+        var elm = viewContainer.element.nativeElement;
         elm.classList.add("row");
     }
     Row = __decorate([Directive({
@@ -429,7 +428,7 @@ var Col = (function () {
         //
     }
     Col.prototype.addClass = function (cls) {
-        this.viewContainer.element.domElement.classList.add(cls);
+        this.viewContainer.element.nativeElement.classList.add(cls);
     };
     Object.defineProperty(Col.prototype, "xs", {
         set: function set(n) {
